@@ -105,6 +105,24 @@
       </div>
     </div>
 
+    <div class="large-4 columns">
+      <div class="cc-widget">
+        <div class="cc-widget-title">
+          <h2>Videos</h2>
+        </div>
+        <div data-ng-controller="VideoController">
+          <div data-ng-repeat="video in videos">
+            <h3 data-ng-bind="video.title"></h3>
+            <video class="video-js vjs-default-skin"
+              controls preload="auto" width="300" height="250"
+              poster=""
+              data-setup='{"example_option":true}'>
+             <source src="{{video.link}}" type='video/mp4' />
+            </video><br><br>
+        </div>
+      </div>
+    </div>
+
     <div class="large-4 columns" data-ng-show="selected_course.class_sites.length">
       <div class="cc-widget">
         <div class="cc-widget-title">
@@ -124,4 +142,7 @@
       </div>
     </div>
   </div>
+
+
+
 </script>
