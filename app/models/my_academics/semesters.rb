@@ -13,6 +13,8 @@ class MyAcademics::Semesters
   def self.build_semester(term_yr, term_cd)
     {
       name: TermCodes.to_english(term_yr, term_cd),
+      year: term_yr,
+      code: term_cd,
       slug: TermCodes.to_slug(term_yr, term_cd),
       time_bucket: self.time_bucket(term_yr, term_cd),
       classes: []
