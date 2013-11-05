@@ -4,9 +4,11 @@
   /**
    * Video controller
    */
-  calcentral.controller('VideoController', ['$http', '$scope', function($http, $scope, $timeout) {
+  calcentral.controller('VideoController', ['$http', '$scope', function($http, $scope) {
 
     $scope.videos = [];
+    $scope.isLoaded = false;
+    $scope.hasVideos = false;
     $scope.data;
     var ccns = [];
     var urls = [];
@@ -14,13 +16,42 @@
     var findVideos = function() {
       var sort = function(obj) {
         var title = obj.mediapackage.title;
+        var posters = [];
+        var id = obj.id;
         var tracks = obj.mediapackage.media.track;
-        angular.forEach(tracks, function(track) {
+        var attachments = obj.mediapackage.attachments.attachment;
+        attachments.every(function(attachment) {
+          if (attachment.mimetype === 'image/jpeg') {
+            posters.push(attachment.url);
+            return false;
+          } else {
+            return true;
+          }
+        });
+        // angular.forEach(tracks, function(track) {
+        //   if (track.mimetype === 'video/mp4') {
+        //    $scope.videos.push({
+        //      title: title,
+        //      paella: 'http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=' + id,
+        //      poster: posters[0],
+        //      link: track.url
+        //    });
+        //    return;
+        //   }
+        // });
+
+        //Finds first mp4 and stops
+        tracks.every(function(track) {
           if (track.mimetype === 'video/mp4') {
            $scope.videos.push({
              title: title,
+             paella: 'http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=' + id,
+             poster: posters[0],
              link: track.url
            });
+           return false;
+          } else {
+            return true;
           }
         });
       };
@@ -55,6 +86,8 @@
             semesterCode = newValues[1].code;
         buildUrls(year, semesterCode);
         requestVideos();
+        $scope.isLoaded = true;
+        // if ($scope.videos.length > 0) {$scope.hasVideos = true;}
       }
     });
 

@@ -105,17 +105,18 @@
       </div>
     </div>
 
-    <div class="large-4 columns">
+    <div class="large-4 columns" data-ng-controller="VideoController">
       <div class="cc-widget">
         <div class="cc-widget-title">
           <h2>Videos</h2>
         </div>
-        <div data-ng-controller="VideoController">
+        <div>
           <div data-ng-repeat="video in videos">
             <h3 data-ng-bind="video.title"></h3>
+            <h4>View the paella <a data-ng-href="{{video.paella}}">here</a></h4>
             <video class="video-js vjs-default-skin"
-              controls preload="auto" width="300" height="250"
-              poster=""
+              controls preload="none" width="300" height="250"
+              data-ng-attr-poster="{{video.poster}}"
               data-setup='{"example_option":true}'>
              <source src="{{video.link}}" type='video/mp4' />
             </video><br><br>
