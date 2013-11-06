@@ -28,6 +28,8 @@ Calcentral::Application.routes.draw do
   match '/api/my/refresh' => 'my_refresh#refresh', :defaults => { :format => 'json' }
   match '/api/my/updated_feeds' => 'is_updated#list', :defaults => {:format => 'json'}
   match '/api/my/event' => 'my_events#create', via: :post, defaults: { format: 'json' }
+  #Video api
+  match '/api/my/videos/:year/:semester/:ccn' => 'my_videos#get_videos', :as => :my_videos, :defaults => { :format => 'json' }
 
   # Canvas embedded application support.
   match '/canvas/embedded/*url' => 'canvas_lti#embedded', :defaults => { :format => 'html' }
