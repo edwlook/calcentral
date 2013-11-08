@@ -15,10 +15,12 @@ class MyVideos < MyMergedModel
   def get_videos_as_json
     request_url = build_url()
     response = request(request_url)
+    # If request fails, return with nothing
     if !response
       return @my_videos
     end
     data = JSON.parse(response.read)
+    # If results are empty, return with nothing
     if data['search-results']['total'] == '0'
       @my_videos
     else
@@ -44,6 +46,7 @@ class MyVideos < MyMergedModel
     return response
   end
 
+  # Find the videos we want and push them to @my_videos[:videos] as an object
   def filter_videos(results)
     paella_base_url = 'http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id='
     results.each do |result|
@@ -69,6 +72,8 @@ class MyVideos < MyMergedModel
     end
   end
 
+  # Get a screenshot for each video
+  # This is the image that shows before a user clicks play
   def get_poster(attachments)
     attachments.each do |attachment|
       if attachment['mimetype'] === 'image/jpeg'
