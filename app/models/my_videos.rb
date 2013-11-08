@@ -14,16 +14,34 @@ class MyVideos < MyMergedModel
 
   def get_videos_as_json
     request_url = build_url()
-    response = JSON.parse(open(request_url).read)
-    results = response['search-results']['result']
-    filter_videos(results)
-    @my_videos
+    response = request(request_url)
+    if !response
+      return @my_videos
+    end
+    data = JSON.parse(response.read)
+    if data['search-results']['total'] == '0'
+      @my_videos
+    else
+      results = data['search-results']['result']
+      filter_videos(results)
+      @my_videos
+    end
   end
 
   def build_url
     base_url = 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
     request_url = base_url + @year + @semester + @ccn
     request_url
+  end
+
+  def request(url)
+    begin
+      response = open(url)
+    rescue
+      puts "An error occured while requesting #{url}"
+      return false
+    end
+    return response
   end
 
   def filter_videos(results)
