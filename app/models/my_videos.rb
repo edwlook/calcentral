@@ -32,23 +32,31 @@ class MyVideos < MyMergedModel
       id = result['id']
       paella = paella_base_url + id
       title = result['mediapackage']['title']
+      attachments = result['mediapackage']['attachments']['attachment']
       tracks = result['mediapackage']['media']['track']
-      tracks.each do |track|
-        if track['mimetype'] === 'video/mp4'
-          @my_videos[:videos].push({
-            :title => title,
-            :link => track['url'],
-            :paella => paella
-          })
-        end
-      end
-      # @my_videos[:videos].push({:id => id})
+      @my_videos[:videos].push({
+        :title => title,
+        :link => get_video_url(tracks),
+        :paella => paella,
+        :poster => get_poster(attachments)
+      })
     end
-    # title = result[0]['org']
-    # puts title
-        # posters = []
-        # id = result.id
-        # tracks = result.mediapackage.media.track
-        # attachments = result.mediapackage.attachments.attachment
   end
+
+  def get_video_url(tracks)
+    tracks.each do |track|
+      if track['mimetype'] === 'video/mp4'
+        return track['url']
+      end
+    end
+  end
+
+  def get_poster(attachments)
+    attachments.each do |attachment|
+      if attachment['mimetype'] === 'image/jpeg'
+        return attachment['url']
+      end
+    end
+  end
+
 end
