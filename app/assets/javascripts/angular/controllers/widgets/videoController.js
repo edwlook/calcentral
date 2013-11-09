@@ -7,21 +7,20 @@
   calcentral.controller('VideoController', ['$http', '$scope', function($http, $scope) {
 
     $scope.videos = [];
-    $scope.isLoaded = false;
-    $scope.hasVideos = false;
     $scope.data;
     var ccns = [];
+
+    var request = function(ccn) {
+      $http.get('/api/my/videos/' + $scope.year + '/' + $scope.semesterCode + '/' + ccn).success(function(data) {
+        angular.forEach(data.videos, function(video) {
+          $scope.videos.push(video);
+        });
+      });
+    };
 
     // Execute request via /api/my/videos/:year/:semester/:ccn for each CCN
     // Add any videos retrieved to $scope.videos
     var requestVideos = function() {
-      var request = function(ccn) {
-        $http.get('/api/my/videos/' + $scope.year + '/' + $scope.semesterCode + '/' + ccn).success(function(data) {
-          angular.forEach(data.videos, function(video) {
-            $scope.videos.push(video);
-          });
-        });
-      };
       angular.forEach(ccns, request);
     };
 
@@ -34,7 +33,6 @@
         $scope.year = newValues[1].year,
         $scope.semesterCode = newValues[1].code;
         requestVideos();
-        $scope.isLoaded = true;
       }
     });
 
