@@ -2,11 +2,12 @@ require 'open-uri'
 require 'json'
 
 class MyVideos < MyMergedModel
-
-  def initialize(year, semester, ccn)
-    @year = year
-    @semester = semester
-    @ccn = ccn
+  attr_reader :my_videos
+  def initialize(options={})
+    @base_url = options[:base_url] ||= 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
+    @year = options[:year]
+    @semester = options[:semester]
+    @ccn = options[:ccn]
     @my_videos = {
       :videos => []
     }
@@ -31,8 +32,7 @@ class MyVideos < MyMergedModel
   end
 
   def build_url
-    base_url = 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
-    request_url = base_url + @year + @semester + @ccn
+    request_url = @base_url + @year + @semester + @ccn
     request_url
   end
 
