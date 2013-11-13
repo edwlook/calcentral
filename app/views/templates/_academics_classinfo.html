@@ -113,12 +113,12 @@
         <div class="cc-widget-padding">
           <div data-ng-repeat="video in videos">
             <h3><span data-ng-bind="video.title"></span> (<a data-ng-href="{{video.paella}}">paella</a>)</h3>
-            <video class="video-js vjs-default-skin"
-              controls preload="none" width="300" height="250"
-              data-ng-attr-poster="{{video.poster}}"
-              data-setup='{"example_option":true}'>
+            <video id="lecture-video-{{$index}}" class="lecture-videos video-js vjs-default-skin"
+              width="300" height="250"
+              data-ng-attr-poster="{{video.poster}}">
              <source src="{{video.link}}" type='video/mp4' />
             </video><br><br>
+          </div>
         </div>
       </div>
     </div>
