@@ -5,7 +5,7 @@ class MyVideos < MyMergedModel
   attr_reader :my_videos
   def initialize(options={})
     @base_url = options[:base_url] ||= 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
-    @ccns = options[:ccns].split(',')
+    @ccns = options[:ccns] ? options[:ccns].split(',') : false
     @my_videos = {
       :videos => []
     }
