@@ -105,18 +105,18 @@
       </div>
     </div>
 
-    <div class="large-4 columns" data-ng-show="videos.length" data-ng-controller="VideoController">
+    <div class="large-4 columns" data-ng-controller="VideoController">
       <div class="cc-widget">
         <div class="cc-widget-title">
           <h2>Videos</h2>
         </div>
-        <div class="cc-widget-padding">
+        <div class="cc-widget-padding" data-cc-spinner-directive>
+          <div data-ng-hide="videos.length">There are no videos.</div>
           <div data-ng-repeat="video in videos">
             <h3><span data-ng-bind="video.title"></span> (<a data-ng-href="{{video.paella}}">paella</a>)</h3>
             <video class="video-js vjs-default-skin"
               controls preload="none" width="300" height="250"
-              data-ng-attr-poster="{{video.poster}}"
-              data-setup>
+              data-ng-attr-poster="{{video.poster}}">
              <source src="{{video.link}}" type='video/mp4' />
             </video><br><br>
           </div>

@@ -22,7 +22,7 @@
     // Add any videos retrieved to $scope.videos
     var requestVideos = function(ccns) {
       $http.get('/api/my/videos/' + ccns.join(',')).success(function(data) {
-        angular.extend($scope.videos, data.videos);
+        angular.extend($scope, data);
         initPlayer();
       });
     };
