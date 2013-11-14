@@ -21,7 +21,8 @@
     // Execute request via /api/my/videos/:ccns as a comma separated list of CCNs
     // Add any videos retrieved to $scope.videos
     var requestVideos = function(ccns) {
-      $http.get('/api/my/videos/' + ccns.join(',')).success(function(data) {
+      $http.get('/dummy/json/videos.json').success(function(data) {
+      // $http.get('/api/my/videos/' + ccns.join(',')).success(function(data) {
         angular.extend($scope, data);
         initPlayer();
       });
