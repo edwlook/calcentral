@@ -5,35 +5,34 @@ class MyVideos < MyMergedModel
   attr_reader :my_videos
   def initialize(options={})
     @base_url = options[:base_url] ||= 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
-    @year = options[:year]
-    @semester = options[:semester]
-    @ccn = options[:ccn]
+    @ccns = options[:ccns].split(',')
     @my_videos = {
       :videos => []
     }
   end
 
   def get_videos_as_json
-    request_url = build_url()
-    response = request(request_url)
-    # If request fails, return with nothing
-    if !response
-      return @my_videos
+    @ccns.each do |ccn|
+      request_url = build_url(ccn)
+      response = request(request_url)
+      # If request fails, go on to the next ccn
+      if !response
+        next
+      end
+      data = JSON.parse(response.read)
+      # If results are empty, go on to the next ccn
+      if data['search-results']['total'] == '0'
+        next
+      else
+        results = data['search-results']['result']
+        filter_videos(results)
+      end
     end
-    data = JSON.parse(response.read)
-    # If results are empty, return with nothing
-    if data['search-results']['total'] == '0'
-      @my_videos
-    else
-      results = data['search-results']['result']
-      filter_videos(results)
-      @my_videos
-    end
+    @my_videos
   end
 
-  def build_url
-    request_url = @base_url + @year + @semester + @ccn
-    request_url
+  def build_url(ccn)
+    request_url = @base_url + ccn
   end
 
   def request(url)
