@@ -1,10 +1,11 @@
 require 'open-uri'
 require 'json'
+require 'openssl'
 
 class MyVideos < MyMergedModel
   attr_reader :my_videos
   def initialize(options={})
-    @base_url = options[:base_url] ||= 'http://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
+    @base_url = options[:base_url] ||= 'https://playback-qa.ets.berkeley.edu/search/paellaEpisodeListing.json?q=&sid='
     @ccns = options[:ccns] ? options[:ccns].split(',') : false
     @my_videos = {
       :videos => []
@@ -38,8 +39,9 @@ class MyVideos < MyMergedModel
   def request(url)
     begin
       response = open(url)
-    rescue
+    rescue => error
       puts "An error occured while requesting #{url}"
+      puts error
       return false
     end
     return response
@@ -47,7 +49,7 @@ class MyVideos < MyMergedModel
 
   # Find the videos we want and push them to @my_videos[:videos] as an object
   def filter_videos(results)
-    paella_base_url = 'http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id='
+    paella_base_url = 'https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id='
     results.each do |result|
       id = result['id']
       paella = paella_base_url + id

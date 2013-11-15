@@ -2,33 +2,33 @@
    "videos":[
       {
          "title":"Chem 1A - 2014-01-24",
-         "link":"http://playback-qa.ets.berkeley.edu/static/engage-player/9023be2e-a052-4e0d-bb57-3aa57f938971/b557eb19-e963-4598-b5b5-e6e5c588e16b/chem1a_short_camera.mp4",
-         "paella":"http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=9023be2e-a052-4e0d-bb57-3aa57f938971",
-         "poster":"http://playback-qa.ets.berkeley.edu/static/engage-player/9023be2e-a052-4e0d-bb57-3aa57f938971/attachment-6/chem1a_short_screen.jpg"
+         "link":"https://playback-qa.ets.berkeley.edu/static/engage-player/9023be2e-a052-4e0d-bb57-3aa57f938971/b557eb19-e963-4598-b5b5-e6e5c588e16b/chem1a_short_camera.mp4",
+         "paella":"https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=9023be2e-a052-4e0d-bb57-3aa57f938971",
+         "poster":"https://playback-qa.ets.berkeley.edu/static/engage-player/9023be2e-a052-4e0d-bb57-3aa57f938971/attachment-6/chem1a_short_screen.jpg"
       },
       {
          "title":"Chem 1A - 2014-01-22",
-         "link":"http://playback-qa.ets.berkeley.edu/static/engage-player/6fe1edfb-6e64-4d3a-81b4-2be913be741c/bd595df3-6db1-4bc5-9d35-eafc5d26b0b2/chem1a_long_camera.mp4",
-         "paella":"http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=6fe1edfb-6e64-4d3a-81b4-2be913be741c",
-         "poster":"http://playback-qa.ets.berkeley.edu/static/engage-player/6fe1edfb-6e64-4d3a-81b4-2be913be741c/7e6d3f7e-66b5-4a04-b885-d6565d09e23d/chem1a_long_screen.jpg"
+         "link":"https://playback-qa.ets.berkeley.edu/static/engage-player/6fe1edfb-6e64-4d3a-81b4-2be913be741c/bd595df3-6db1-4bc5-9d35-eafc5d26b0b2/chem1a_long_camera.mp4",
+         "paella":"https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=6fe1edfb-6e64-4d3a-81b4-2be913be741c",
+         "poster":"https://playback-qa.ets.berkeley.edu/static/engage-player/6fe1edfb-6e64-4d3a-81b4-2be913be741c/7e6d3f7e-66b5-4a04-b885-d6565d09e23d/chem1a_long_screen.jpg"
       },
       {
          "title":"Biology 1A, 001 - Fall 2013 - Lecture 003",
-         "link":"http://playback-qa.ets.berkeley.edu/static/engage-player/f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e/b3ff9b42-482d-4466-9e44-4b6b03247102/screen.mp4",
-         "paella":"http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e",
-         "poster":"http://playback-qa.ets.berkeley.edu/static/engage-player/f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e/cf48b79e-035f-4865-9a62-f142a2addec2/screen.jpg"
+         "link":"https://playback-qa.ets.berkeley.edu/static/engage-player/f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e/b3ff9b42-482d-4466-9e44-4b6b03247102/screen.mp4",
+         "paella":"https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e",
+         "poster":"https://playback-qa.ets.berkeley.edu/static/engage-player/f0b747d4-7e8b-4adf-b0d8-bfc6f0cc3c8e/cf48b79e-035f-4865-9a62-f142a2addec2/screen.jpg"
       },
       {
          "title":"Biology 1A, 001 - Fall 2013 - Lecture 002",
-         "link":"http://playback-qa.ets.berkeley.edu/static/engage-player/7fffc1ca-423a-4ed2-935e-12b1c25213ac/b801f16d-8b0d-43a5-9491-319bc81a1d91/screen.mp4",
-         "paella":"http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=7fffc1ca-423a-4ed2-935e-12b1c25213ac",
-         "poster":"http://playback-qa.ets.berkeley.edu/static/engage-player/7fffc1ca-423a-4ed2-935e-12b1c25213ac/8738b47c-8acc-4aa5-87c1-8949178c326e/screen.jpg"
+         "link":"https://playback-qa.ets.berkeley.edu/static/engage-player/7fffc1ca-423a-4ed2-935e-12b1c25213ac/b801f16d-8b0d-43a5-9491-319bc81a1d91/screen.mp4",
+         "paella":"https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=7fffc1ca-423a-4ed2-935e-12b1c25213ac",
+         "poster":"https://playback-qa.ets.berkeley.edu/static/engage-player/7fffc1ca-423a-4ed2-935e-12b1c25213ac/8738b47c-8acc-4aa5-87c1-8949178c326e/screen.jpg"
       },
       {
          "title":"Biology 1A, 001 - Fall 2013 - Lecture 001",
-         "link":"http://playback-qa.ets.berkeley.edu/static/engage-player/26ff1ba8-cb24-4366-8a8d-81d6f0eee721/7c2a4da2-6832-49c2-95a7-ffdee81c12be/video.mp4",
-         "paella":"http://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=26ff1ba8-cb24-4366-8a8d-81d6f0eee721",
-         "poster":"http://playback-qa.ets.berkeley.edu/static/engage-player/26ff1ba8-cb24-4366-8a8d-81d6f0eee721/04904bfe-4dc3-4f72-bcfb-a62f77e55d58/screen.jpg"
+         "link":"https://playback-qa.ets.berkeley.edu/static/engage-player/26ff1ba8-cb24-4366-8a8d-81d6f0eee721/7c2a4da2-6832-49c2-95a7-ffdee81c12be/video.mp4",
+         "paella":"https://playback-qa.ets.berkeley.edu/paella/ui/watch.html?server=&id=26ff1ba8-cb24-4366-8a8d-81d6f0eee721",
+         "poster":"https://playback-qa.ets.berkeley.edu/static/engage-player/26ff1ba8-cb24-4366-8a8d-81d6f0eee721/04904bfe-4dc3-4f72-bcfb-a62f77e55d58/screen.jpg"
       }
    ]
 }

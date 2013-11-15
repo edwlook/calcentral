@@ -13,7 +13,7 @@
       $timeout(function() {
         var elements = document.getElementsByTagName('video');
         for (var i = 0; i < elements.length; i++) {
-          _V_(elements[i], { "controls": true, "autoplay": false, "preload": "none" });
+          _V_(elements[i], { 'controls': true, 'autoplay': false, 'preload': 'none' });
         }
       }, 1)
     };
