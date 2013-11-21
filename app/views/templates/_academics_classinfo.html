@@ -96,11 +96,22 @@
                 <a data-ng-href="https://calnet.berkeley.edu/directory/details.pl?uid={{instructor.uid}}" data-ng-bind="instructor.name"></a>
                 <a data-ng-show="instructor.email" title="Email {{instructor.name}}" data-ng-href="mailto:{{instructor.email}}">
                   <span class="cc-visuallyhidden">Email {{instructor.name}}</span>
-                  <i class="cc-icon fa fa-envelope"></i>
+                  <i class="cc-icon icon-envelope"></i>
                 </a>
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-4 columns" data-ng-controller="VideoController">
+      <div class="cc-widget">
+        <div class="cc-widget-title">
+          <h2>Videos</h2>
+        </div>
+        <div class="cc-widget-padding" data-cc-spinner-directive>
+          Videos
         </div>
       </div>
     </div>
