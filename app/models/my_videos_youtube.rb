@@ -18,12 +18,6 @@ class MyVideosYoutube < MyMergedModel
       return @my_videos
     end
     data = JSON.parse(response.read)
-    # if data['search-results']['total'] == '0'
-    #   next
-    # else
-    #   results = data['search-results']['result']
-    #   filter_videos(results)
-    # end
     filter_videos(data)
     @my_videos
   end
@@ -43,7 +37,6 @@ class MyVideosYoutube < MyMergedModel
     return response
   end
 
-  # Find the videos we want and push them to @my_videos[:videos] as an object
   def filter_videos(data)
     entries = data['feed']['entry']
     entries.each do |entry|
@@ -51,26 +44,8 @@ class MyVideosYoutube < MyMergedModel
       link = entry['media$group']['media$content'][0]['url']
       @my_videos[:videos].push({
         :title => title,
-        :link => link
+        :link => link.gsub('/v/', '/embed/')
       })
-    end
-  end
-
-  def get_video_url(tracks)
-    tracks.each do |track|
-      if track['mimetype'] === 'video/mp4'
-        return track['url']
-      end
-    end
-  end
-
-  # Get a screenshot for each video
-  # This is the image that shows before a user clicks play
-  def get_poster(attachments)
-    attachments.each do |attachment|
-      if attachment['mimetype'] === 'image/jpeg'
-        return attachment['url']
-      end
     end
   end
 
