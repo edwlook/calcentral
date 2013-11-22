@@ -6,7 +6,12 @@
   'use strict';
 
   // Set the configuration
-  calcentral.config(['$httpProvider', function($httpProvider) {
+  calcentral.config(['$httpProvider', '$sceDelegateProvider', function($httpProvider, $sceDelegateProvider) {
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'http://www.youtube.com/**'
+    ]);
 
     // Add the HTTP error service
     $httpProvider.interceptors.push('httpErrorInterceptorService');
