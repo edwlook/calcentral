@@ -110,13 +110,15 @@
         <div class="cc-widget-title">
           <h2>Videos</h2>
         </div>
-        <div class="cc-widget-padding" data-cc-spinner-directive>
-          <div data-ng-hide="videos.length">There are no videos.</div>
-          <div class="youtube_video" data-ng-repeat="video in videos">
-            <h3 data-ng-bind="video.title"></h3>
-            <iframe type="text/html" width="100%" height="100%"
-            data-ng-attr-src="{{video.link}}"
-            frameborder="0"/>
+        <div class="cc-widget-padding">
+          <div data-cc-spinner-directive>
+            <div data-ng-hide="videos.length"><span data-ng-bind="errorMessage"></span></div>
+            <div class="youtube_video" data-ng-repeat="video in videos">
+              <h3 data-ng-bind="video.title"></h3>
+              <iframe type="text/html" width="100%" height="100%"
+              data-ng-attr-src="{{video.link}}"
+              frameborder="0"/>
+            </div>
           </div>
         </div>
       </div>
