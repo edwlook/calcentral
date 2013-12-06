@@ -41,6 +41,7 @@ class MyPlaylists < MyMergedModel
     # extract the itu_courses array
     cut_index = data.index('itu_courses')
     js = data.slice(cut_index..-1)
+    # Format to valid JSON
     replacements =
     [
       [' =', ':'],

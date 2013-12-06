@@ -41,10 +41,12 @@ class MyYoutube < MyMergedModel
     entries = data['feed']['entry']
     entries.each do |entry|
       title = entry['media$group']['media$title']['$t']
-      link = entry['media$group']['media$content'][0]['url']
+      url = entry['media$group']['media$content'][0]['url']
+      url.gsub!('/v/', '/embed/')
+      link = url + '&showinfo=0&theme=light&modestbranding=1'
       @my_videos[:videos].push({
         :title => title,
-        :link => link.gsub('/v/', '/embed/')
+        :link => link
       })
     end
   end
