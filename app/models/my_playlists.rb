@@ -3,8 +3,6 @@ require 'json'
 class MyPlaylists < MyMergedModel
 
   def initialize(options={})
-    # @base_url = options[:base_url] ||= 'http://localhost:3000/dummy/json/videos.json'
-    @base_url = options[:base_url] ||= 'http://webcast.berkeley.edu/itunesu_podcasts.js'
     @playlist_title = options[:playlist_title] ? options[:playlist_title] : false
     @fetch_error_message = 'There was a problem fetching the videos.'
     @no_videos_error_message = 'There are no videos.'
@@ -15,6 +13,7 @@ class MyPlaylists < MyMergedModel
   end
 
   def get_playlists_as_json
+    return {} unless Settings.features.videos
     response = request
     if response.blank?
       @my_playlist[:error_message] = @fetch_error_message
@@ -29,13 +28,12 @@ class MyPlaylists < MyMergedModel
     if !@playlist_title
       return data
     end
-    get_playlist_id(data, @playlist_title)
+    get_playlist_id(data)
     @my_playlist
   end
 
   def request
-    proxy = VideosProxy.new({:url => @base_url, :vcr_name => 'Playlists'})
-    proxy_response = proxy.get
+    PlaylistsProxy.new.get
   end
 
   def convert_to_json(response)
@@ -64,7 +62,8 @@ class MyPlaylists < MyMergedModel
     return false
   end
 
-  def get_playlist_id(data, title)
+  def get_playlist_id(data)
+    title = @playlist_title
     courses = data['itu_courses']
     courses.each do |course|
       # Make sure the titles match and the playlist_id exists

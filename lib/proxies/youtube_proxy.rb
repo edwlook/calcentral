@@ -1,22 +1,23 @@
-class VideosProxy
+class YoutubeProxy < BaseProxy
 
   include ClassLogger
 
+  APP_ID = "Youtube"
+
   def initialize(options = {})
-    @app_id = options[:vcr_name]
-    @fake = options[:fake]
-    @url = options[:url]
-    @params = options[:params] ? options[:params] : {}
+    super(Settings.youtube_proxy, options)
+    @url = @settings.base_url + options[:playlist_id]
+    @params = @settings.params.marshal_dump ? @settings.params.marshal_dump : {}
   end
 
   def get
-    request(@url, @app_id.downcase, @params)
+    request(@url, 'videos', @params)
   end
 
   def request(path, vcr_cassette, params = {})
       #logger.info "Fake = #@fake; Making request to #{url} on behalf of user #{@uid}, student_id = #{student_id}; cache expirat
       begin
-        response = FakeableProxy.wrap_request(@app_id + "_" + vcr_cassette, @fake, {:match_requests_on => [:method, :path]}) {
+        response = FakeableProxy.wrap_request(APP_ID + "_" + vcr_cassette, @fake, {:match_requests_on => [:method, :path]}) {
           Faraday::Connection.new(
             :url => @url,
             :params => params

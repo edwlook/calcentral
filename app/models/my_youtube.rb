@@ -3,7 +3,6 @@ require 'json'
 class MyYoutube < MyMergedModel
 
   def initialize(options={})
-    @base_url = options[:base_url] ||= 'http://gdata.youtube.com/feeds/api/playlists/'
     @playlist_id = options[:playlist_id] ? options[:playlist_id] : false
     @my_videos = {
       :videos => []
@@ -11,32 +10,21 @@ class MyYoutube < MyMergedModel
   end
 
   def get_videos_as_json
-    request_url = build_url
-    response = request(request_url)
+    return {} unless Settings.features.videos
+    response = request
     if !response
       return @my_videos
     end
-    data = JSON.parse(response[:body])
-    filter_videos(data)
+    filter_videos(response)
     @my_videos
   end
 
-  def build_url()
-    request_url = @base_url + @playlist_id
+  def request()
+    YoutubeProxy.new({:playlist_id => @playlist_id}).get
   end
 
-  def request(url)
-    proxy = VideosProxy.new({
-      :url => url,
-      :vcr_name => 'Youtube',
-      :params => {
-        :alt => 'json'
-      }
-    })
-    proxy_response = proxy.get
-  end
-
-  def filter_videos(data)
+  def filter_videos(response)
+    data = JSON.parse(response[:body])
     entries = data['feed']['entry']
     entries.each do |entry|
       title = entry['media$group']['media$title']['$t']

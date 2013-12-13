@@ -5,6 +5,7 @@ class MyVideos < MyMergedModel
   end
 
   def get_videos_as_json
+    return {} unless Settings.features.videos
     id = get_playlist_id
     if !id[:error_message].blank?
       return id
