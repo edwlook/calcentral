@@ -11,7 +11,7 @@ describe YoutubeProxy do
     response_body = proxy_response[:body]
     expect(response_body).not_to be_nil
     data = JSON.parse(response_body)
-    data["feed"]["title"]["$t"].should == "Biology 1A, 001 - Spring 2012"
+    expect(data["feed"]["title"]["$t"]).to eq "Biology 1A, 001 - Spring 2012"
   end
 
 end
