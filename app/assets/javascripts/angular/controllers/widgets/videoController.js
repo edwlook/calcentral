@@ -1,4 +1,4 @@
-(function(window, calcentral) {
+(function(angular, calcentral) {
   'use strict';
 
   /**
@@ -10,7 +10,7 @@
       var title = courseDepartment + ' ' + courseCategory + ', ' + courseSection + ' - ' + courseSemester;
       $http.get('/api/my/videos/' + title).success(function(data) {
         angular.extend($scope, data);
-      })
+      });
     };
 
     var formatClassTitles = function() {
@@ -29,4 +29,4 @@
 
   }]);
 
-})(window, window.calcentral);
+})(window.angular, window.calcentral);
