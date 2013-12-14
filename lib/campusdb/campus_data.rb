@@ -179,7 +179,7 @@ class CampusData < OracleDatabase
           and c.term_cd = r.term_cd
           and c.course_cntl_num = r.course_cntl_num )
       join calcentral_dept_vw d on (
-        c.dept_name = d.dept_name)
+        d.dept_name = c.dept_name)
       where r.student_ldap_uid = #{person_id.to_i}
         and c.section_cancel_flag is null
         #{terms_clause}

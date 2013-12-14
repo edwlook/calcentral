@@ -11,6 +11,13 @@ describe MyPlaylists do
   let(:error_message) { subject.instance_eval {@my_playlist[:error_message]} }
   let(:playlist_id) { subject.instance_eval {@my_playlist[:playlist_id]} }
 
+  context "when traversing data" do
+    it "should return playlist id", :testext => true do
+      subject.get_playlist_id(data)
+      expect(playlist_id).to eq "ECCF8E59B3C769FB01"
+    end
+  end
+
   context "when formatting succeeds" do
     it "should format response to json", :testext => true do
       expect(data["itu_courses"]).not_to be_nil
@@ -27,13 +34,6 @@ describe MyPlaylists do
 
     it "should return an empty playlist id" do
       expect(playlist_id).to eq ""
-    end
-  end
-
-  context "when traversing data" do
-    it "should return playlist id" do
-      subject.get_playlist_id(data)
-      expect(playlist_id).to eq "ECCF8E59B3C769FB01"
     end
   end
 
