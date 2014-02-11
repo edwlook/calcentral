@@ -2,15 +2,32 @@ source "https://rubygems.org"
 
 # The core framework
 # https://github.com/rails/rails
-gem "rails", "3.2.16"
+# gem "rails", "3.2.16"
+gem 'rails', '~>4.0.0'
 
-gem "activerecord-jdbc-adapter", "~> 1.2.9"
+gem 'rails4_upgrade'
+
+# Rails 4 upgrade gems
+gem 'actionpack-action_caching', '~>1.0.0'
+gem 'actionpack-page_caching', '~>1.0.0'
+gem 'actionpack-xml_parser', '~>1.0.0'
+gem 'actionview-encoded_mail_to', '~>1.0.4'
+gem 'activerecord-session_store', '~>0.0.1'
+gem 'activeresource', '~>4.0.0.beta1'
+# gem 'protected_attributes', '~>1.0.1'
+gem "protected_attributes", "~> 1.0.5"
+gem 'rails-observers', '~>0.1.1'
+gem 'rails-perftest', '~>0.0.2'
+
+# gem "activerecord-jdbc-adapter", "~> 1.2.9"
+gem "activerecord-jdbc-adapter", "~> 1.3.6"
 
 # Postgresql adapter
-gem "activerecord-jdbcpostgresql-adapter", "~> 1.2.9"
+# gem "activerecord-jdbcpostgresql-adapter", "~> 1.2.9"
+gem "activerecord-jdbcpostgresql-adapter", "~> 1.3.6"
 
 # H2 adapter
-gem "activerecord-jdbch2-adapter", "~> 1.2.9"
+gem "activerecord-jdbch2-adapter", "~> 1.3.6"
 
 # A JSON implementation as a Ruby extension in C
 # http://flori.github.com/json/
@@ -60,8 +77,10 @@ gem 'nokogiri', "~> 1.5.9", :platforms => :jruby
 gem 'link_header', "~> 0.0.7"
 
 # for simplified relational data management. rails_admin requires devise.
-gem 'rails_admin', "0.4.9"
-gem "devise", "~> 2.2.5"
+# gem 'rails_admin', "0.4.9"
+gem "rails_admin", "~> 0.6.1"
+# gem "devise", "~> 2.2.5"
+gem "devise", "~> 3.2.2"
 # rails_admin requires bootstrap_sass but isn't very picky about the version it uses.
 # lock bootstrap-sass at 2.3.2.0 because later version introduce an "invalid character" error during assets:precompile
 gem "bootstrap-sass", "2.3.2.0"
@@ -76,50 +95,54 @@ gem "retriable", "~> 1.3.3.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+# group :assets do
 
-  # Our very own library for angular dependency!
-  gem "angular-gem", "1.2.9"
+# Our very own library for angular dependency!
+gem "angular-gem", "1.2.9"
 
-  # Datepicker
-  gem "pikaday-gem", "~> 1.1.0.0"
+# Datepicker
+gem "pikaday-gem", "~> 1.1.0.0"
 
-  # CSS Framework - also includes Compass and SASS
-  # https://github.com/zurb/foundation
-  gem "sass-rails", "~> 3.2.6"
-  gem "coffee-rails", "~> 3.2.2"
-  gem "compass-rails", "~> 1.0.3"
-  gem "foundation-rails", "~> 5.0.2.0"
+# CSS Framework - also includes Compass and SASS
+# https://github.com/zurb/foundation
+# gem "sass-rails", "~> 3.2.6"
+gem 'sass-rails', '~>4.0.0'
+# gem "coffee-rails", "~> 3.2.2"
+gem 'coffee-rails', '~>4.0.0'
+# gem "compass-rails", "~> 1.0.3"
+gem "compass-rails", "~> 1.1.3"
+gem "foundation-rails", "~> 5.0.2.0"
 
-  # Closure Compiler Gem for JS compression
-  # https://github.com/documentcloud/closure-compiler
-  gem "closure-compiler", "~> 1.1.10"
+# Closure Compiler Gem for JS compression
+# https://github.com/documentcloud/closure-compiler
+gem "closure-compiler", "~> 1.1.10"
 
-  # Font awesome - an icon font
-  # https://github.com/bokmann/font-awesome-rails
-  gem "font-awesome-rails", "~> 4.0.0.0"
+# Font awesome - an icon font
+# https://github.com/bokmann/font-awesome-rails
+gem "font-awesome-rails", "~> 4.0.0.0"
 
-  # Moment.js
-  # https://github.com/derekprior/momentjs-rails
-  gem "momentjs-rails", "~> 2.2.1"
+# Moment.js
+# https://github.com/derekprior/momentjs-rails
+gem "momentjs-rails", "~> 2.2.1"
 
-  # Placeholder.js
-  # https://github.com/ets-berkeley-edu/placeholder-gem
-  gem "placeholder-gem", "~> 3.0.0.0"
+# Placeholder.js
+# https://github.com/ets-berkeley-edu/placeholder-gem
+gem "placeholder-gem", "~> 3.0.0.0"
 
-  # Raven.js - library for JS error logging
-  gem "ravenjs-gem", "~> 1.0.7.0"
+# Raven.js - library for JS error logging
+gem "ravenjs-gem", "~> 1.0.7.0"
 
-  # ngmin-rails
-  # https://github.com/jasonm/ngmin-rails
-  gem "ngmin-rails", "~> 0.4.0"
+# ngmin-rails
+# https://github.com/jasonm/ngmin-rails
+gem "ngmin-rails", "~> 0.4.0"
 
-end
+# end
 
 # Oracle adapter
 # Purposely excluding this for test environments since folks have to install ojdbc6
 group :development, :testext, :production do
-  gem "activerecord-oracle_enhanced-adapter", "1.4.2"
+  # gem "activerecord-oracle_enhanced-adapter", "1.4.2"
+  gem "activerecord-oracle_enhanced-adapter", "~> 1.5.2"
   gem "rvm-capistrano", "~> 1.3.1"
   gem "capistrano", "~> 2.15.4"
 end
@@ -166,7 +189,8 @@ group :development do
 end
 
 group :test do
-  gem "activerecord-jdbcsqlite3-adapter", "~> 1.2.9"
+  # gem "activerecord-jdbcsqlite3-adapter", "~> 1.2.9"
+  gem "activerecord-jdbcsqlite3-adapter", "~> 1.3.6"
 end
 
 group :test, :testext do
@@ -178,7 +202,7 @@ group :test, :testext do
 end
 
 group :development, :assets do
-  gem "turbo-sprockets-rails3", "~> 0.3.11"
+  # gem "turbo-sprockets-rails3", "~> 0.3.11"
 end
 
 group :shell_debug do
