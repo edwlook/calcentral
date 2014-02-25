@@ -1,0 +1,31 @@
+<script type="text/ng-template" id="templates/living.html">
+  <div class="cc-page-living" data-ng-cloaks>
+
+    <div class="medium-9 medium-push-3 columns cc-page-campus-content">
+
+      <!-- <h1 data-ng-bind="currentTopCategory"></h1> -->
+      <div class="cc-widget">
+        <div class="cc-widget-title">
+          <h2>Washers and Dryers</h2>
+        </div>
+        <div class="cc-widget-padding">
+          Hi there
+        </div>
+      </div>
+
+    </div>
+
+    <div class="medium-3 medium-pull-9 columns cc-page-campus-navigation" id="cc-local-navigation">
+
+      <div data-ng-repeat="navitem in navigation">
+        <h3 data-ng-show="navitem.label">{{navitem.label}}</h3>
+        <ul>
+          <li data-ng-class="{'active':(currentTopCategory==category.name)}" data-ng-repeat="category in navitem.categories">
+            <a data-ng-href="/living/{{category.id}}">{{category.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</script>

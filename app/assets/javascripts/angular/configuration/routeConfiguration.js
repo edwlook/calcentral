@@ -30,6 +30,18 @@
       templateUrl: 'templates/academics_classinfo.html',
       controller: 'AcademicsController'
     }).
+    when('/living', {
+      templateUrl: 'templates/living.html',
+      controller: 'LivingController'
+    }).
+    when('/living/:category', {
+      templateUrl: 'templates/living.html',
+      controller: 'LivingController'
+    }).
+    // when('/living/:category/:subcategory', {
+    //   templateUrl: 'templates/living.html',
+    //   controller: 'LivingController'
+    // }).
     // We actually need to duplicate the campus items, more info on
     // http://stackoverflow.com/questions/12524533
     when('/campus', {
