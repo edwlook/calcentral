@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="templates/living.html">
   <div class="cc-page-living" data-ng-cloaks>
 
-    <div class="medium-9 medium-push-3 columns cc-page-campus-content">
+    <div class="medium-9 medium-push-3 columns cc-page-living-content">
 
       <!-- <h1 data-ng-bind="currentTopCategory"></h1> -->
       <div class="cc-widget">
@@ -9,7 +9,50 @@
           <h2>Washers and Dryers</h2>
         </div>
         <div class="cc-widget-padding">
-          Hi there
+
+
+
+          <div class="cc-table cc-table-sortable cc-page-myfinances-table">
+            <table>
+
+
+              <thead>
+                <tr>
+                  <th width="10%" data-ng-click="changeSorting('starred')">
+                    Star
+                  </th>
+                  <th width="45%" data-ng-click="changeSorting('location')">
+                    Location <i data-ng-class="getSortClass('location')"></i>
+                  </th>
+                  <th width="25%" data-ng-click="changeSorting('washersAvailable')">
+                    Washers <i data-ng-class="getSortClass('washersAvailable')"></i>
+                  </th>
+                  <th width="25%" data-ng-click="changeSorting('dryersAvailable')">
+                    Dryers <i data-ng-class="getSortClass('dryersAvailable')"></i>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="cc-widget-table-hover ng-scope" data-cc-accessible-focus-directive="" tabindex="0" data-ng-repeat="machine in laundry | orderBy:sort.column:sort.descending">
+                <tr>
+                  <td class="cc-widget-table-hover-notriangle">
+                     <i data-ng-click="toggleStar(machine)" data-ng-class="getStarredClass(machine)" class="star"></i>
+                  </td>
+                  <td class="cc-widget-table-hover-notriangle" data-ng-bind="machine.location">
+                  </td>
+                  <td class="cc-widget-table-hover-notriangle" data-ng-bind="machine.washersStatus">
+                  </td>
+                  <td class="cc-widget-table-hover-notriangle" data-ng-bind="machine.dryersStatus">
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+
+
+
+
         </div>
       </div>
 

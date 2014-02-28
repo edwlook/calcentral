@@ -10,8 +10,27 @@
     font-size: 16px;
     padding-bottom: 5px;
   }
+  .star {
+    background-color: transparent;
+    background-image: asset-data-url('star-off.png');
+    background-repeat:no-repeat;
+    display: block;
+    height:16px;
+    width:16px;
+    float:left;
+  }
+  .starred {
+    text-indent: -5000px;
+    background-color: transparent;
+    background-image: asset-data-url('star-on.png');
+    background-repeat:no-repeat;
+    height:16px;
+    width:16px;
+    float:left;
+  }
+
   .cc-widget {
-    width: 100%;
+    width: 45%;
   }
   .cc-page-campus-navigation h3 {
     border-top: 1px solid #b9c8d0;
@@ -26,6 +45,9 @@
     a {
       display: block;
     }
+  }
+  .cc-page-living-content {
+    padding-right: 0;
   }
   .cc-page-campus-content {
     padding: 15px 25px;
@@ -72,7 +94,7 @@
     .cc-page-campus-navigation {
       border-right: none;
     }
-    .cc-page-campus-content {
+    .cc-page-living-content {
       padding-left: 0;
       padding-right: 0;
       padding-top: 0;
