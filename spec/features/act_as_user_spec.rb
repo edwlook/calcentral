@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature "act_as_user" do
   before do
-    @random_id = Time.now.to_f.to_s.gsub(".", "")
+    @random_id = Time.now.to_f.to_s.gsub(".", "").slice(0, 8)
     @fake_events_list = GoogleApps::EventsList.new(fake: true)
     User::Auth.new_or_update_superuser! "238382"
     User::Auth.new_or_update_superuser! "2040"

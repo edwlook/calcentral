@@ -39,6 +39,7 @@ class ActAsController < ApplicationController
       logger.warn "ACT-AS: User #{current_user.user_id} FAILED to login to #{act_as_uid}, values must be integers"
       return false
     end
+    return true
   end
 
 end
