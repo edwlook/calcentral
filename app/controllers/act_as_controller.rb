@@ -34,10 +34,8 @@ class ActAsController < ApplicationController
       return false
     end
 
-    # Ensure that uids are numeric
-    begin
-      Integer(act_as_uid, 10)
-    rescue ArgumentError
+    # Ensure that uids are numeric and 9 or less digits
+    if /^[0-9]{1,9}$/.match(act_as_uid) == nil
       logger.warn "ACT-AS: User #{current_user.user_id} FAILED to login to #{act_as_uid}, values must be integers"
       return false
     end
