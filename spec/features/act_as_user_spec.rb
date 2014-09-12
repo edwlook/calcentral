@@ -109,7 +109,7 @@ feature "act_as_user" do
   end
 
   scenario "check the footer message for a user that has never logged in" do
-    random_id = Time.now.to_f.to_s.gsub(".", "")
+    random_id = Time.now.to_f.to_s.gsub(".", "").slice(0, 8)
     login_with_cas "238382"
     act_as_user random_id
 
