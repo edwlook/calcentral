@@ -114,6 +114,8 @@ Calcentral::Application.routes.draw do
   # Act-as endpoints
   post '/act_as' => 'act_as#start', :via => :post
   post '/stop_act_as' => 'act_as#stop', :via => :post
+  get '/stored_users/:uid' => 'stored_users#get', :via => :get, :defaults => { :format => 'json' }
+
 
   # All the other paths should use the bootstrap page
   # We need this because we use html5mode=true
