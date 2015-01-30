@@ -5,7 +5,6 @@ module User
     self.table_name = 'user_data'
     self.primary_key = :uid
 
-    # Should i change :primary_key to 'uid' ?
     has_many :saved_uids, :class_name => 'User::SavedUid', :foreign_key => 'owner_uid'
     has_many :recent_uids, :class_name => 'User::RecentUid', :foreign_key => 'owner_uid'
 
